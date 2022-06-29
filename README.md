@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://www.braint-tech.com/">
+  <a href="https://www.icmc.usp.br/">
     <img src="https://web.icmc.usp.br/SCAPINST/identidade_visual/logomarca/LOGO%20ICMC%20RGB.png" alt="ICMC Logo" width="237" height="107"/>
   </a>
 </p>
@@ -8,7 +8,7 @@
 Ecodive is a project created with React, Expo and TypeScript to help recycling donors to match recycling pickers.
 
 ## Links
-+ <a href="https://www.figma.com/file/xsF6PknU3niy6Zae7vLHYg/Recicle%2B?node-id=0%3A1" target="_blank">Prototype</a>
++ <a href="https://www.figma.com/file/xsF6PknU3niy6Zae7vLHYg/Recicle%2B?node-id=0%3A1">Prototype</a>
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -62,6 +62,7 @@ Ex: `git commit -m "Feature(banner-parallax): Added the parallax effect to the b
 
 ## Development Team
 * **Fred Xavier** - *Tech Leader and Front-end Dev* - [fredxc](https://github.com/fredxc)
+* **Vitor Laperriere** - *Front-end Dev* - [vitorlape](https://github.com/vitorlape)
 
 <p align="right">
   Made with <b><i>markdown</i></b> and <b><i><3</i></b> by <a href="https://github.com/fredxc">Fred Xavier</a>
