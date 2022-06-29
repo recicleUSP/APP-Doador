@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import Colors from "../constants/Colors";
 import SignIn from "../screens/auth/SignIn";
 import SignUp from "../screens/auth/SignUp";
 import { RootStackParamList } from "../types";
 import Onboarding from "../screens/Onboarding";
-import Colors from "../constants/Colors";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -17,7 +17,7 @@ export default function AuthNavigator() {
         headerShown: true,
         headerTransparent: true,
         headerShadowVisible: false,
-        headerTintColor: Colors.primary,
+        headerTintColor: Colors.primary.regular,
       }}
     >
       <Stack.Screen name="Onboarding" component={Onboarding} />

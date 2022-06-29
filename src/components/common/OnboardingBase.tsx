@@ -1,7 +1,6 @@
-import { AntDesign } from "@expo/vector-icons";
+import { Box, Center, Image } from "native-base";
 import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Box, Center, Image, IconButton } from "native-base";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 interface OnboardingBaseParams {
@@ -23,7 +22,7 @@ export const OnboardingBase: React.FC<OnboardingBaseParams> = ({
   return (
     <Box flex={1}>
       <Center pt={24} pb={20}>
-        <Image size="2xl" source={img} alt="Recycles Logo" />
+        <Image size="xl" source={img} alt="Ecodive Logo" />
       </Center>
       <Box px={6} pt={10} flex={1} bg="primary.500" borderTopRadius={32}>
         <KeyboardAwareScrollView

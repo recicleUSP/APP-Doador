@@ -1,6 +1,3 @@
-import React from "react";
-import * as Yup from "yup";
-import { Formik } from "formik";
 import {
   Text,
   Input,
@@ -9,6 +6,9 @@ import {
   FormControl,
   WarningOutlineIcon,
 } from "native-base";
+import React from "react";
+import * as Yup from "yup";
+import { Formik } from "formik";
 
 import { useAuth } from "../../contexts";
 import { OnboardingBase } from "../../components/common";

@@ -1,7 +1,8 @@
 import React from "react";
-import { OnboardingBase } from "../components/common";
 import { useNavigation } from "@react-navigation/core";
 import { Box, Text, Button, Heading } from "native-base";
+
+import { OnboardingBase } from "../components/common";
 
 export default function Onboarding() {
   const navigation = useNavigation();

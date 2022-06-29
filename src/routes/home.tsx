@@ -28,7 +28,7 @@ function BottomTabNavigator() {
       initialRouteName="Home"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: Colors.primary,
+        tabBarActiveTintColor: Colors.primary.regular,
         tabBarStyle: { height: 54, paddingBottom: 8 },
       }}
     >
