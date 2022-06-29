@@ -1,15 +1,15 @@
-import { StyleSheet } from "react-native";
-import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
-
 import {
   Box,
   Text,
   Icon,
   Button,
   Avatar,
-  ScrollView,
   Divider,
+  ScrollView,
 } from "native-base";
+import { StyleSheet } from "react-native";
+import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+
 import { useAuth } from "../../contexts";
 
 export default function Profile() {
@@ -23,9 +23,9 @@ export default function Profile() {
       </Box>
       <Avatar
         mt={-12}
+        size="2xl"
         bg="muted.200"
         alignSelf="center"
-        size="2xl"
         source={{
           uri: "https://images.unsplash.com/photo-1510771463146-e89e6e86560e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80",
         }}
@@ -38,8 +38,8 @@ export default function Profile() {
         </Text>
         {[1, 2, 3, 4, 5].map((item) => (
           <Icon
-            key={item}
             size="md"
+            key={item}
             name="star"
             as={FontAwesome}
             color="primary.500"
@@ -91,5 +91,3 @@ export default function Profile() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({});

@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
-
 import { Box, Text, Icon, Button, ScrollView } from "native-base";
 
 export default function History() {
@@ -64,5 +63,3 @@ export default function History() {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({});

@@ -24,8 +24,8 @@ export default function useCachedResources() {
 
   React.useEffect(() => {
     LogBox.ignoreLogs([
-      "Setting a timer for a long period of",
       "Require cycle",
+      "Setting a timer for a long period of",
     ]);
 
     async function loadResourcesAndDataAsync() {

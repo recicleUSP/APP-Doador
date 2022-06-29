@@ -53,8 +53,8 @@ export const AuthProvider: React.FC = ({ children }) => {
     <AuthContext.Provider
       value={{
         signed,
-        loading,
         signIn,
+        loading,
         signOut,
       }}
     >
