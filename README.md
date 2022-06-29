@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://www.braint-tech.com/" width="200" height="78">
-    <img src="https://web.icmc.usp.br/SCAPINST/identidade_visual/logomarca/LOGO%20ICMC%20RGB.png" alt="ICMC Logo"/>
+  <a href="https://www.braint-tech.com/">
+    <img src="https://web.icmc.usp.br/SCAPINST/identidade_visual/logomarca/LOGO%20ICMC%20RGB.png" alt="ICMC Logo" width="237" height="107"/>
   </a>
 </p>
 
