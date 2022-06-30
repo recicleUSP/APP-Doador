@@ -65,7 +65,9 @@ function BottomTabNavigator() {
         component={Profile}
         options={{
           title: "PERFIL",
-          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="user-alt" color={color} />
+          ),
         }}
       />
     </BottomTab.Navigator>
