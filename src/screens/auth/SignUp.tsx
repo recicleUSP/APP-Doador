@@ -26,12 +26,7 @@ export default function SignUp() {
   });
 
   return (
-    <OnboardingBase>
-      <Heading color="white">Cadastrar</Heading>
-      <Text mt={2} mb={4} color="white" fontSize="lg" lineHeight="sm">
-        Cadastre e contribua hoje mesmo!
-      </Text>
-
+    <OnboardingBase title="CADASTRO">
       <Formik
         validateOnMount
         validationSchema={SignUpSchema}
@@ -52,17 +47,14 @@ export default function SignUp() {
           const phoneError = Boolean(touched["phone"] && errors["phone"]);
           return (
             <>
-              <FormControl isInvalid={phoneError}>
+              <FormControl isInvalid={phoneError} mt={10}>
                 <Input
-                  color="white"
-                  fontSize="lg"
-                  borderColor="white"
+                  fontSize="md"
                   value={values["name"]}
                   keyboardType="phone-pad"
                   onBlur={handleBlur("name")}
                   onChangeText={handleChange("name")}
                   placeholder="Digite seu nome completo"
-                  placeholderTextColor="rgba(255,255,255,0.6)"
                 />
                 <FormControl.ErrorMessage
                   mt={1}
@@ -76,15 +68,12 @@ export default function SignUp() {
 
               <FormControl mt={6} isInvalid={phoneError}>
                 <Input
-                  color="white"
-                  fontSize="lg"
-                  borderColor="white"
+                  fontSize="md"
                   value={values["phone"]}
                   keyboardType="phone-pad"
                   onBlur={handleBlur("phone")}
                   placeholder="Digite seu telefone"
                   onChangeText={handleChange("phone")}
-                  placeholderTextColor="rgba(255,255,255,0.6)"
                 />
                 <FormControl.ErrorMessage
                   mt={1}
@@ -98,15 +87,14 @@ export default function SignUp() {
 
               <Button
                 size="lg"
-                bg="white"
+                bg="emerald.600"
                 disabled={invalid}
-                colorScheme="white"
                 isLoading={loading}
-                mt={nameError ? 6 : 8}
+                colorScheme="emerald"
+                mt={nameError ? 6 : 10}
                 opacity={invalid ? 0.5 : 1}
                 onPress={() => handleSubmit()}
-                _text={{ color: "muted.500" }}
-                _pressed={{ bg: "muted.300" }}
+                _pressed={{ bg: "emerald.700" }}
               >
                 Cadastrar
               </Button>

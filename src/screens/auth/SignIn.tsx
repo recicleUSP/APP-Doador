@@ -25,12 +25,7 @@ export default function SignIn() {
   });
 
   return (
-    <OnboardingBase>
-      <Heading color="white">Entrar</Heading>
-      <Text my={4} color="white" fontSize="lg" lineHeight="sm">
-        Acesse sua conta usando seu telefone.
-      </Text>
-
+    <OnboardingBase title="LOGIN">
       <Formik
         validateOnMount
         initialValues={{ phone: "" }}
@@ -50,17 +45,14 @@ export default function SignIn() {
           const error = Boolean(touched["phone"] && errors["phone"]);
           return (
             <>
-              <FormControl isInvalid={error}>
+              <FormControl isInvalid={error} mt={10}>
                 <Input
-                  color="white"
-                  fontSize="xl"
-                  borderColor="white"
+                  fontSize="md"
                   value={values["phone"]}
                   keyboardType="phone-pad"
                   onBlur={handleBlur("phone")}
                   placeholder="Digite seu telefone"
                   onChangeText={handleChange("phone")}
-                  placeholderTextColor="rgba(255,255,255,0.6)"
                 />
                 <FormControl.ErrorMessage
                   mt={1}
@@ -74,15 +66,14 @@ export default function SignIn() {
 
               <Button
                 size="lg"
-                bg="white"
+                bg="emerald.600"
                 disabled={invalid}
-                colorScheme="white"
-                mt={error ? 8 : 12}
+                mt={error ? 6 : 10}
                 isLoading={loading}
+                colorScheme="emerald"
                 opacity={invalid ? 0.5 : 1}
                 onPress={() => handleSubmit()}
-                _text={{ color: "muted.500" }}
-                _pressed={{ bg: "muted.300" }}
+                _pressed={{ bg: "emerald.700" }}
               >
                 Entrar
               </Button>
