@@ -164,8 +164,8 @@ export default function Home() {
         shadow={2}
         rounded={8}
         borderWidth={1}
-        alignItems="center"
         bgColor="white"
+        alignItems="center"
         borderColor="emerald.600"
       >
         <Text color="emerald.600">RANKING DE MEDALHAS</Text>
