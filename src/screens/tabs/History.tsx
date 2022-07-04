@@ -1,17 +1,16 @@
-import { StyleSheet } from "react-native";
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { Box, Text, Icon, Button, ScrollView } from "native-base";
 
 export default function History() {
   return (
     <ScrollView>
-      <Box pt={16} height="156" alignItems="center" bgColor="primary.100">
-        <Text fontSize="lg" color="muted.600">
+      <Box pt={16} height="156" alignItems="center" bgColor="emerald.50">
+        <Text fontSize="lg" color="emerald.600">
           COLETAS
         </Text>
       </Box>
       <Box p={6} mx={6} mt={-12} shadow="2" rounded={8} bgColor="white">
-        <Text color="muted.600">
+        <Text color="muted.600" fontSize="md">
           <Text fontSize="lg" color="muted.300">
             ●{" "}
           </Text>
@@ -22,7 +21,7 @@ export default function History() {
           size="lg"
           shadow="2"
           variant="solid"
-          colorScheme="primary"
+          colorScheme="emerald"
           leftIcon={<Icon size="sm" name="recycle" as={FontAwesome5} />}
         >
           CRIAR COLETA

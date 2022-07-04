@@ -7,7 +7,6 @@ import {
   Divider,
   ScrollView,
 } from "native-base";
-import { StyleSheet } from "react-native";
 import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 
 import { useAuth } from "../../contexts";
@@ -16,7 +15,7 @@ export default function Profile() {
   const { signOut } = useAuth();
   return (
     <ScrollView>
-      <Box pt={16} height="156" alignItems="center" bgColor="primary.100">
+      <Box pt={16} height="156" alignItems="center" bgColor="emerald.50">
         <Text fontSize="lg" color="muted.600">
           MEU PERFIL
         </Text>
@@ -42,7 +41,7 @@ export default function Profile() {
             key={item}
             name="star"
             as={FontAwesome}
-            color="primary.500"
+            color="emerald.600"
           />
         ))}
       </Box>
@@ -73,7 +72,7 @@ export default function Profile() {
         <Divider />
       </Box>
       <Text mt={4} color="muted.400" textAlign="center">
-        Caso tenha alguma dúvida, entre em contato: cidade@reciclamais.org
+        Caso tenha alguma dúvida, entre em contato: contato@ecodive.com.br
       </Text>
       <Button
         mx={6}

@@ -36,7 +36,7 @@ function BottomTabNavigator() {
         name="Home"
         component={Home}
         options={{
-          title: "Home",
+          title: "INÍCIO",
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="recycle" color={color} />
           ),
@@ -46,7 +46,7 @@ function BottomTabNavigator() {
         name="History"
         component={History}
         options={{
-          title: "History",
+          title: "COLETAS",
           tabBarIcon: ({ color }) => (
             <TabBarIcon name="history" color={color} />
           ),
@@ -56,7 +56,7 @@ function BottomTabNavigator() {
         name="Impact"
         component={Impact}
         options={{
-          title: "Impact",
+          title: "IMPACTO",
           tabBarIcon: ({ color }) => <TabBarIcon name="envira" color={color} />,
         }}
       />
@@ -64,8 +64,10 @@ function BottomTabNavigator() {
         name="Profile"
         component={Profile}
         options={{
-          title: "Profile",
-          tabBarIcon: ({ color }) => <TabBarIcon name="user" color={color} />,
+          title: "PERFIL",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="user-alt" color={color} />
+          ),
         }}
       />
     </BottomTab.Navigator>

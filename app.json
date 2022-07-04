@@ -28,7 +28,7 @@
       "userInterfaceStyle": "automatic",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FEFEFE"
+        "backgroundColor": "#FFFFFF"
       }
     },
     "web": {

@@ -25,7 +25,7 @@ export const DevAlert: React.FC = () => {
           atualizações!
           <Button
             mt={4}
-            colorScheme="primary"
+            colorScheme="emerald"
             onPress={() => setDevAlert(false)}
           >
             Entendi
