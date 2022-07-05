@@ -8,6 +8,7 @@ import Colors from "../constants/Colors";
 import Impact from "../screens/tabs/Impact";
 import History from "../screens/tabs/History";
 import Profile from "../screens/tabs/Profile";
+import Notification from "../screens/Notification";
 import { RootStackParamList, RootTabParamList } from "../types";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -16,9 +17,9 @@ export function HomeNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
-     {
-      //<Stack.Screen name="Notification" component={BottomTabNavigator} />
-     }
+    
+    <Stack.Screen name="Notification" component={Notification} />
+   
     
     </Stack.Navigator>
   );
