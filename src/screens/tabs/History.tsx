@@ -62,7 +62,7 @@ export default function History() {
 
         <Box mt={3}>
           <Text color="muted.400">Março</Text>
-          <Box p={6} mt={1} shadow="2" rounded={8} bgColor="white">
+          <Box p={3} mt={1} shadow="2" rounded={8} bgColor="white">
             <Box
               flexDirection="row"
               alignItems="center"
@@ -70,7 +70,7 @@ export default function History() {
             >
               <Box flexDirection="row">
                 <Avatar
-                  size="xs"
+                  size="sm"
                   bg="muted.200"
                   source={{
                     uri: 'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
