@@ -21,40 +21,28 @@ export default function Notification() {
   const data = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-
-      timeStamp: '12:47 ',
-      recentText: 'Parabéns! Você ganhou 397 ReciCoins por concluir uma coleta!',
+      recentText:
+        'Parabéns! Você ganhou 397 ReciCoins por concluir uma coleta!',
       avatarUrl:
         'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-
-      timeStamp: '11:11 ',
       recentText: 'Roberto Almeida marcou uma coleta como concluída',
       avatarUrl:
         'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
     },
     {
       id: '58694a0f-3da1-471f-bd96-145571e29d72',
-
-      timeStamp: '6:22 ',
-      recentText: 'O Banco Sicoob acaba de te dar uma oportunidade perfeita. Clique e confira!!',
+      recentText:
+        'O Banco Sicoob acaba de te dar uma oportunidade perfeita. Clique e confira!!',
       avatarUrl:
         'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
     },
     {
       id: '68694a0f-3da1-431f-bd56-142371e29d72',
-
-      timeStamp: '8:56 ',
-      recentText: 'Roberto Almeida aceitou sua coleta de 2x Sacos (10L) de Alumínio',
-      avatarUrl:
-        'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
-    },
-    {
-      id: '28694a0f-3da1-471f-bd96-142456e29d72',
-      timeStamp: '12:47 ',
-      recentText: 'I will call today.',
+      recentText:
+        'Roberto Almeida aceitou sua coleta de 2x Sacos (10L) de Alumínio',
       avatarUrl:
         'https://images.unsplash.com/photo-1510771463146-e89e6e86560e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
     },
@@ -107,44 +95,26 @@ export default function Notification() {
               py="2"
               flexDirection="row"
               justifyContent="space-between"
+              flex={1}
             >
-              <Box>
+              <Box flexDirection="row">
                 <Avatar
                   size="38px"
                   source={{
                     uri: item.avatarUrl,
                   }}
-                  />
-                </Box>
-                <Box>
-                  <VStack>
-                    <Text
-                      color="coolGray.600"
-                      _dark={{
-                        color: 'warmGray.200',
-                      }}
-                      pl={4}
-                    >
-                      {item.recentText}
-                    </Text>
-                  </VStack>
+                />
 
-                </Box>
-
-               
-                <Box>
-                  <Text
-                    fontSize="xs"
-                    _dark={{
-                      color: 'warmGray.50',
-                    }}
-                    color="coolGray.800"
-                    alignSelf="flex-end"
-                  >
-                    {item.timeStamp}
-                  </Text>
-                </Box>
-              
+                <Text
+                  color="coolGray.600"
+                  ml={2}
+                  _dark={{
+                    color: 'warmGray.200',
+                  }}
+                >
+                  {item.recentText}
+                </Text>
+              </Box>
             </Box>
           )}
           keyExtractor={(item) => item.id}
