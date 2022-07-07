@@ -71,10 +71,12 @@ export default function History() {
         <Text bold fontSize="lg" color="muted.600">
           Resumo Trimestral
         </Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+
         <Box flexDirection="row">
           <Box
-            height="156"
-            width="156"
+            height="150"
+            width="150"
             shadow="2"
             rounded={8}
             bgColor="emerald.50"
@@ -101,12 +103,12 @@ export default function History() {
                 cy={'40%'}
                 r={R}
                 stroke={'grey'}
-                strokeWidth={8}
+                strokeWidth={6}
               />
               <AnimatedCircle
                 cx={'50%'}
                 cy={'40%'}
-                r={R}
+                r={R+1}
                 stroke={'green'}
                 strokeWidth={10}
                 strokeDasharray={CIRCLE_LENGHT}
@@ -125,8 +127,8 @@ export default function History() {
             </Text>
           </Box>
           <Box
-            height="156"
-            width="156"
+            height="150"
+            width="150"
             shadow="2"
             rounded={8}
             bgColor="emerald.50"
@@ -141,16 +143,18 @@ export default function History() {
             </Text>
             <Text
                alignSelf="center"
-               mt={'60%'}
+               mt={'70%'}
                position="absolute"
                color="muted.600"
                fontSize="lg"
+               lineHeight={"xs"}
             >
               {"   "}COLETAS CONCLUIDAS
             </Text>
           </Box>
         </Box>
         
+        </ScrollView>
       </Box>
 
       <Box my={8} px={6}>
