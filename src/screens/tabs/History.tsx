@@ -8,11 +8,40 @@ import {
   Avatar,
   Divider,
 } from 'native-base';
+import { useEffect } from 'react';
+import { Dimensions } from 'react-native';
+import Animated, {
+  useAnimatedProps,
+  useDerivedValue,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
+import { ReText } from 'react-native-redash';
+import Svg, { Circle } from 'react-native-svg';
 
 import { useCommon } from '../../contexts';
 
+const { width, height } = Dimensions.get('screen');
+
+const CIRCLE_LENGHT = 250;
+const R = CIRCLE_LENGHT / (2 * Math.PI);
+const AnimatedCircle = Animated.createAnimatedComponent(Circle);
+
 export default function History() {
-  const { setDevAlert } = useCommon();
+  const progress = useSharedValue(0);
+
+  useEffect(() => {
+    progress.value = withTiming(0.25, { duration: 2000 });
+  }, []);
+
+  const AnimatedProps = useAnimatedProps(() => ({
+    strokeDashoffset: CIRCLE_LENGHT * (1 - progress.value),
+  }));
+
+  const ProgressText = useDerivedValue(() => {
+    return `${Math.floor(progress.value * 100) + '%'} `;
+  });
+
   return (
     <ScrollView>
       <Box pt={16} height="156" alignItems="center" bgColor="emerald.50">
@@ -42,17 +71,86 @@ export default function History() {
         <Text bold fontSize="lg" color="muted.600">
           Resumo Trimestral
         </Text>
-        <Icon
-          mt={6}
-          size="lg"
-          name="inbox"
-          as={FontAwesome}
-          color="muted.400"
-          alignSelf="center"
-        />
-        <Text textAlign="center" color="muted.400">
-          Nenhum resumo gerado
-        </Text>
+        <Box flexDirection="row">
+          <Box
+            height="156"
+            width="156"
+            shadow="2"
+            rounded={8}
+            bgColor="emerald.50"
+          >
+            <ReText
+              style={{
+                paddingTop: '30%',
+                position: 'absolute',
+                fontSize: 20,
+                color: 'green',
+                alignSelf: 'center',
+              }}
+              text={ProgressText}
+            />
+            <Svg
+              style={{
+                paddingTop: 40,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Circle
+                cx={'50%'}
+                cy={'40%'}
+                r={R}
+                stroke={'grey'}
+                strokeWidth={8}
+              />
+              <AnimatedCircle
+                cx={'50%'}
+                cy={'40%'}
+                r={R}
+                stroke={'green'}
+                strokeWidth={10}
+                strokeDasharray={CIRCLE_LENGHT}
+                animatedProps={AnimatedProps}
+                strokeLinecap={'round'}
+              />
+            </Svg>
+            <Text
+              alignSelf="center"
+              mt={'75%'}
+              position="absolute"
+              color="muted.600"
+              fontSize="xl"
+            >
+              PAPEL
+            </Text>
+          </Box>
+          <Box
+            height="156"
+            width="156"
+            shadow="2"
+            rounded={8}
+            bgColor="emerald.50"
+            ml={2}
+          >
+            <Text alignSelf="center"
+              mt={"15%"}
+              fontSize="6xl"
+              color="emerald.600"
+              >
+              12
+            </Text>
+            <Text
+               alignSelf="center"
+               mt={'60%'}
+               position="absolute"
+               color="muted.600"
+               fontSize="lg"
+            >
+              {"   "}COLETAS CONCLUIDAS
+            </Text>
+          </Box>
+        </Box>
+        
       </Box>
 
       <Box my={8} px={6}>
