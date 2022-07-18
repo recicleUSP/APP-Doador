@@ -16,6 +16,10 @@ export function HomeNavigator() {
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       <Stack.Screen name="Root" component={BottomTabNavigator} />
+     {
+      //<Stack.Screen name="Notification" component={BottomTabNavigator} />
+     }
+    
     </Stack.Navigator>
   );
 }
