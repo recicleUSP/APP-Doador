@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Box, Text, Icon, Button, ScrollView, IconButton } from "native-base";
+import { useNavigation } from "@react-navigation/native";
 
 import { useCommon } from "../../contexts";
+
+
 
 export default function Home() {
   const { setDevAlert } = useCommon();
   const [firstTime, setFirstTime] = useState(true);
+  const navigation = useNavigation();
+ 
 
   return (
     <ScrollView bgColor="white">
@@ -29,12 +34,14 @@ export default function Home() {
             rounded={32}
             variant="solid"
             bgColor="emerald.50"
-            onPress={() => setDevAlert(true)}
+            onPress={() => navigation.navigate("Notification")}
+            
             _icon={{
               name: "bell",
               paddingLeft: 0.5,
               as: FontAwesome5,
               color: "emerald.600",
+            
             }}
           />
         </Box>

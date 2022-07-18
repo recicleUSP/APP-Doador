@@ -15,6 +15,7 @@ export type RootStackParamList = {
   SignIn: any;
   SignUp: any;
   Onboarding: any;
+  Notification: any;
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
 };
 
