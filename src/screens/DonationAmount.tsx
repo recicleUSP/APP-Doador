@@ -15,6 +15,8 @@ import {
   Stack,
   Checkbox,
   Slider,
+  FormControl,
+  Input,
 } from 'native-base';
 import { useState } from 'react';
 
@@ -22,8 +24,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function DonationType() {
   const navigation = useNavigation();
-  const [onChangeValue, setOnChangeValue] = useState(3);
- 
+  const [onChangeValueSack, setOnChangeValueSack] = useState(0);
+  const [onChangeValueBox, setOnChangeValueBox] = useState(0);
 
   return (
     <View>
@@ -61,29 +63,23 @@ export default function DonationType() {
       <Text color="muted.400" mt={8} fontSize="lg" alignSelf="center" mx={8}>
         Informe, por gentileza, a quantidade de material que será coletado:
       </Text>
-      <Box mt={85}>
+      <Box mt={8} mx={8}>
+        <Text color="muted.500"  fontSize="lg" alignSelf="flex-start">
+          QUANTIDADE DE SACOS:
+        </Text>
 
-      <Text
-        color="muted.500"
-        mt={8}
-        fontSize="lg"
-        alignSelf="flex-start"
-        mx={8}
-      >
-        QUANTIDADE DE SACOS:
-      </Text>
-      <Box alignItems="center" w="100%">
         <Slider
-          defaultValue={3}
+          defaultValue={0}
+          alignSelf="center"
           size="lg"
+          mt={4}
           colorScheme="emerald"
           w="100%"
-          maxW="300"
-          maxValue={5}
+          maxW="150"
+          maxValue={8}
           onChange={(v) => {
-            setOnChangeValue(Math.floor(v));
+            setOnChangeValueSack(Math.floor(v));
           }}
-         
         >
           <Slider.Track bg="muted.400">
             <Slider.FilledTrack bg="emerald.600" />
@@ -97,14 +93,54 @@ export default function DonationType() {
             />
           </Slider.Thumb>
         </Slider>
-        <Text mt={50} textAlign="center" fontSize="2xl" >{onChangeValue}KG</Text>
-      </Box>
+        <Text  textAlign="center" fontSize="2xl">
+          {onChangeValueSack}
+        </Text>
+        <Text color="muted.500" mt={6} fontSize="lg" alignSelf="flex-start">
+          QUANTIDADE DE CAIXAS:
+        </Text>
+
+        <Slider
+          defaultValue={0}
+          alignSelf="center"
+          size="lg"
+          mt={4}
+          colorScheme="emerald"
+          w="100%"
+          maxW="150"
+          maxValue={8}
+          onChange={(v) => {
+            setOnChangeValueBox(Math.floor(v));
+          }}
+        >
+          <Slider.Track bg="muted.400">
+            <Slider.FilledTrack bg="emerald.600" />
+          </Slider.Track>
+          <Slider.Thumb borderWidth="0" bg="transparent">
+            <Icon
+              as={FontAwesome5}
+              name="box-open"
+              color="emerald.600"
+              size="2xl"
+            />
+          </Slider.Thumb>
+        </Slider>
+        <Text  textAlign="center" fontSize="2xl">
+          {onChangeValueBox}
+        </Text>
+        <FormControl mt={4}>
+            <FormControl.Label>Observações</FormControl.Label>
+            <Input height={100}/>
+            <FormControl.HelperText>
+              Algum recipiente diferente?
+            </FormControl.HelperText>
+          </FormControl>
       </Box>
 
       <Box
         flexDirection="row"
         borderColor="muted.100"
-        mt={190}
+        mt={6}
         justifyContent="center"
       >
         <Button
