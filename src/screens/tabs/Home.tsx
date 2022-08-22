@@ -161,6 +161,7 @@ export default function Home() {
           variant="solid"
           colorScheme="emerald"
           leftIcon={<Icon size="sm" name="recycle" as={FontAwesome5} />}
+          onPress={() => navigation.navigate("Donation")}
         >
           RECICLAR
         </Button>
