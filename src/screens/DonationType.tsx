@@ -111,7 +111,7 @@ export default function DonationType() {
           value="Metal"
           colorScheme="emerald"
           size="lg"
-          icon={<Icon as={<FontAwesome5 name="can-food" />} />}
+          icon={<Icon as={<FontAwesome5 name="spray-can" />} />}
         >
           METAL
         </Checkbox>
@@ -119,7 +119,7 @@ export default function DonationType() {
           value="Eletronic"
           colorScheme="emerald"
           size="lg"
-          icon={<Icon as={<FontAwesome5 name="integrated-circuit-chip" />} />}
+          icon={<Icon as={<FontAwesome5 name="mobile-alt" />} />}
         >
           ELETRONICO
         </Checkbox>

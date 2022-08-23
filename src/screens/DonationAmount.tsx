@@ -22,7 +22,7 @@ import { useState } from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export default function DonationType() {
+export default function DonationAmount() {
   const navigation = useNavigation();
   const [onChangeValueSack, setOnChangeValueSack] = useState(0);
   const [onChangeValueBox, setOnChangeValueBox] = useState(0);
@@ -140,7 +140,7 @@ export default function DonationType() {
       <Box
         flexDirection="row"
         borderColor="muted.100"
-        mt={6}
+        mt={4}
         justifyContent="center"
       >
         <Button
@@ -161,7 +161,7 @@ export default function DonationType() {
           shadow="2"
           variant="solid"
           colorScheme="emerald"
-          onPress={() => navigation.navigate('DonationAmount')}
+          onPress={() => navigation.navigate('DonationScheduling')}
         >
           PRÓXIMO
         </Button>
