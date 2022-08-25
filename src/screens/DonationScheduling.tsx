@@ -1,6 +1,7 @@
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 import {
   Box,
@@ -18,14 +19,24 @@ import {
   FormControl,
   Input,
 } from 'native-base';
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function DonationScheduling() {
   const navigation = useNavigation();
-  const [onChangeValueSack, setOnChangeValueSack] = useState(0);
-  const [onChangeValueBox, setOnChangeValueBox] = useState(0);
+  const [multiSliderValue, setMultiSliderValue] = useState([9, 12]);
+  const [
+    nonCollidingMultiSliderValue,
+    setNonCollidingMultiSliderValue,
+  ] = useState([0, 100]);
+
+  
+
+  const multiSliderValuesChange = (values: SetStateAction<number[]>) => setMultiSliderValue(values);
+  const nonCollidingMultiSliderValuesChange = (values: SetStateAction<number[]>) =>setNonCollidingMultiSliderValue(values);
+
+ 
 
   return (
     <View>
@@ -64,34 +75,22 @@ export default function DonationScheduling() {
         Selecione dia e horário para a coleta
       </Text>
       <Box mt={2} mx={8}>
-      <Slider
-          defaultValue={0}
-          alignSelf="center"
-          size="lg"
-          mt={2}
-          colorScheme="emerald"
-          w="100%"
-          maxW="300"
-          maxValue={8}
-          onChange={(v) => {
-            setOnChangeValueSack(Math.floor(v));
-          }}
-          
-        >
-          <Slider.Track bg="muted.400">
-            <Slider.FilledTrack bg="emerald.600" />
-          </Slider.Track>
-          <Slider.Thumb  borderWidth="0" bg="transparent" >
-          <Icon
-              as={MaterialCommunityIcons}
-              name="sack"
-              color="emerald.600"
-              size="2xl"
-            />
-          </Slider.Thumb>
-        </Slider>
-        <Text textAlign="center" fontSize="2xl">
-          {onChangeValueSack}
+      <MultiSlider 
+        values={[multiSliderValue[0], multiSliderValue[1]]}
+        sliderLength={250}
+        onValuesChange={multiSliderValuesChange}
+        min={6}
+        max={22}
+        step={4}
+        allowOverlap={false}
+        snapped
+        minMarkerOverlapDistance={40}
+        containerStyle={{
+          alignSelf: "center"
+        }}
+      />
+        <Text color="muted.400" textAlign="center" fontSize="md" mt={-2}>
+        {multiSliderValue[0]}h até {multiSliderValue[1]}h
         </Text>
         <Stack
           direction={{
@@ -100,7 +99,7 @@ export default function DonationScheduling() {
           }}
           space={3}
           alignItems="flex-start"
-          mt={2}
+          mt={4}
         >
           <Checkbox
             value="paper"
