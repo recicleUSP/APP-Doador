@@ -17,6 +17,8 @@ import {
   Slider,
   FormControl,
   Input,
+  Divider,
+  Radio,
 } from 'native-base';
 import { useState } from 'react';
 
@@ -63,20 +65,20 @@ export default function DonationAmount() {
       <Text color="muted.400" mt={8} fontSize="lg" alignSelf="center" mx={8}>
         Informe, por gentileza, a quantidade de material que será coletado:
       </Text>
-      <Box mt={8} mx={8}>
-        <Text color="muted.500"  fontSize="lg" alignSelf="flex-start">
+      <Box mt={4} mx={8}>
+        <Text color="muted.500" fontSize="md" alignSelf="flex-start" bold>
           QUANTIDADE DE SACOS:
         </Text>
 
         <Slider
           defaultValue={0}
           alignSelf="center"
-          size="lg"
+          size="md"
           mt={4}
           colorScheme="emerald"
           w="100%"
-          maxW="150"
-          maxValue={8}
+          maxW="250"
+          maxValue={10}
           onChange={(v) => {
             setOnChangeValueSack(Math.floor(v));
           }}
@@ -89,26 +91,32 @@ export default function DonationAmount() {
               as={MaterialCommunityIcons}
               name="sack"
               color="emerald.600"
-              size="2xl"
+              size="lg"
             />
           </Slider.Thumb>
         </Slider>
-        <Text  textAlign="center" fontSize="2xl">
+        <Text textAlign="center" fontSize="lg">
           {onChangeValueSack}
         </Text>
-        <Text color="muted.500" mt={6} fontSize="lg" alignSelf="flex-start">
+        <Text
+          color="muted.500"
+          mt={4}
+          fontSize="md"
+          alignSelf="flex-start"
+          bold
+        >
           QUANTIDADE DE CAIXAS:
         </Text>
 
         <Slider
           defaultValue={0}
           alignSelf="center"
-          size="lg"
+          size="md"
           mt={4}
           colorScheme="emerald"
           w="100%"
-          maxW="150"
-          maxValue={8}
+          maxW="250"
+          maxValue={10}
           onChange={(v) => {
             setOnChangeValueBox(Math.floor(v));
           }}
@@ -118,29 +126,79 @@ export default function DonationAmount() {
           </Slider.Track>
           <Slider.Thumb borderWidth="0" bg="transparent">
             <Icon
+              paddingLeft={-0.5}
               as={FontAwesome5}
-              name="box-open"
+              name="box"
               color="emerald.600"
-              size="2xl"
+              size="lg"
             />
           </Slider.Thumb>
         </Slider>
-        <Text  textAlign="center" fontSize="2xl">
+        <Text textAlign="center" fontSize="lg">
           {onChangeValueBox}
         </Text>
+
+        <Text color="muted.500" mt={4} fontSize="md" alignSelf="center" bold>
+          PESO ESTIMADO:
+        </Text>
+
+        <Radio.Group
+          defaultValue="0"
+          size="lg"
+          name="Options"
+          colorScheme="green"
+          mt={2}
+          justifyContent="space-around"
+          flexDirection="row"
+        >
+          <Radio
+            _text={{
+              color: 'emerald.600',
+            }}
+            value="1"
+            icon={<Icon as={<MaterialCommunityIcons name="check" />} />}
+            my={1}
+          >
+            {' '}
+          </Radio>
+
+          <Radio
+            _text={{
+              color: 'emerald.600',
+            }}
+            value="2"
+            icon={<Icon as={<MaterialCommunityIcons name="check" />} />}
+            my={1}
+          >
+            {' '}
+          </Radio>
+          <Radio
+            _text={{
+              color: 'emerald.600',
+            }}
+            value="3"
+            icon={<Icon as={<MaterialCommunityIcons name="check" />} />}
+            my={1}
+          >
+            {' '}
+          </Radio>
+        </Radio.Group>
+        <Box justifyContent="space-around" flexDirection="row">
+          <Text color="emerald.600">1kg a 4kg</Text>
+          <Text color="emerald.600">5kg a 9kg</Text>
+          <Text color="emerald.600">10kg a 15kg</Text>
+        </Box>
+
         <FormControl mt={4}>
-            <FormControl.Label>Observações</FormControl.Label>
-            <Input height={100}/>
-            <FormControl.HelperText>
-              Algum recipiente diferente?
-            </FormControl.HelperText>
-          </FormControl>
+          <FormControl.Label>Observações:</FormControl.Label>
+          <Input height={60} />
+        </FormControl>
       </Box>
 
       <Box
         flexDirection="row"
         borderColor="muted.100"
-        mt={4}
+        mt={6}
         justifyContent="center"
       >
         <Button

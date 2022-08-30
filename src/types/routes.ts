@@ -20,6 +20,8 @@ export type RootStackParamList = {
   DonationType: any;
   DonationAmount: any;
   DonationScheduling: any;
+  DonationAddMoreScheduling: any;
+  DonationResume: any;
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
 };
 

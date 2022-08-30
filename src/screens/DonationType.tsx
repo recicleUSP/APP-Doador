@@ -1,4 +1,5 @@
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 import {
@@ -87,7 +88,7 @@ export default function DonationType() {
           colorScheme="emerald"
           value="Plastic"
           size="lg"
-          icon={<Icon as={<FontAwesome5 name="trash" />} />}
+          icon={<Icon as={<MaterialCommunityIcons name="bottle-soda-classic" />} />}
         >
           PLÁSTICO
         </Checkbox>
@@ -103,7 +104,7 @@ export default function DonationType() {
           value="Oil"
           colorScheme="emerald"
           size="lg"
-          icon={<Icon as={<FontAwesome5 name="oil-can" />} />}
+          icon={<Icon as={<MaterialCommunityIcons name="oil" />} />}
         >
           ÓLEO DE COZINHA
         </Checkbox>
@@ -116,10 +117,11 @@ export default function DonationType() {
           METAL
         </Checkbox>
         <Checkbox
+        
           value="Eletronic"
           colorScheme="emerald"
           size="lg"
-          icon={<Icon as={<FontAwesome5 name="mobile-alt" />} />}
+          icon={<Icon as={<MaterialCommunityIcons name="cellphone-basic" />} width="100px" />}
         >
           ELETRONICO
         </Checkbox>

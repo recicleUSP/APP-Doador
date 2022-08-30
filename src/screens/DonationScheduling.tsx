@@ -18,6 +18,7 @@ import {
   Slider,
   FormControl,
   Input,
+  Radio,
 } from 'native-base';
 import { SetStateAction, useState } from 'react';
 
@@ -26,17 +27,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function DonationScheduling() {
   const navigation = useNavigation();
   const [multiSliderValue, setMultiSliderValue] = useState([9, 12]);
-  const [
-    nonCollidingMultiSliderValue,
-    setNonCollidingMultiSliderValue,
-  ] = useState([0, 100]);
+  const [nonCollidingMultiSliderValue, setNonCollidingMultiSliderValue] =
+    useState([0, 100]);
 
-  
-
-  const multiSliderValuesChange = (values: SetStateAction<number[]>) => setMultiSliderValue(values);
-  const nonCollidingMultiSliderValuesChange = (values: SetStateAction<number[]>) =>setNonCollidingMultiSliderValue(values);
-
- 
+  const multiSliderValuesChange = (values: SetStateAction<number[]>) =>
+    setMultiSliderValue(values);
+  const nonCollidingMultiSliderValuesChange = (
+    values: SetStateAction<number[]>
+  ) => setNonCollidingMultiSliderValue(values);
 
   return (
     <View>
@@ -74,23 +72,23 @@ export default function DonationScheduling() {
       <Text color="muted.400" mt={6} fontSize="lg" alignSelf="center" mx={8}>
         Selecione dia e horário para a coleta
       </Text>
-      <Box mt={2} mx={8}>
-      <MultiSlider 
-        values={[multiSliderValue[0], multiSliderValue[1]]}
-        sliderLength={250}
-        onValuesChange={multiSliderValuesChange}
-        min={6}
-        max={22}
-        step={4}
-        allowOverlap={false}
-        snapped
-        minMarkerOverlapDistance={40}
-        containerStyle={{
-          alignSelf: "center"
-        }}
-      />
+      <Box mx={8}>
+        <MultiSlider
+          values={[multiSliderValue[0], multiSliderValue[1]]}
+          sliderLength={250}
+          onValuesChange={multiSliderValuesChange}
+          min={6}
+          max={22}
+          step={4}
+          allowOverlap={false}
+          snapped
+          minMarkerOverlapDistance={40}
+          containerStyle={{
+            alignSelf: 'center',
+          }}
+        />
         <Text color="muted.400" textAlign="center" fontSize="md" mt={-2}>
-        {multiSliderValue[0]}h até {multiSliderValue[1]}h
+          {multiSliderValue[0]}h até {multiSliderValue[1]}h
         </Text>
         <Stack
           direction={{
@@ -159,73 +157,86 @@ export default function DonationScheduling() {
           </Checkbox>
         </Stack>
 
-        <Stack
-          direction={{
-            base: 'row',
-            md: 'row',
-          }}
-          space={12}
-          alignItems="flex-start"
-          mt={8}
+        <Radio.Group
+          defaultValue="0"
+          size="lg"
+          name="Options"
+          colorScheme="green"
+          justifyContent="space-around"
+          mt={6}
         >
-          <Checkbox
-           value="weekly"
-           colorScheme="emerald"
-           borderColor="emerald.600"
-           size="md"
-           textDecorationColor="green"
-           icon={<Icon as={<FontAwesome5 name="check" />} />}
+          <Stack
+            direction={{
+              base: 'row',
+              md: 'row',
+            }}
+            alignItems={{
+              base: 'flex-start',
+              md: 'center',
+            }}
+            space={5}
+            w="100%"
           >
-           <Text color="emerald.600" >Coleta Única</Text>
-            
-          </Checkbox>
-          <Checkbox
-            value="weekly"
-            colorScheme="emerald"
-            borderColor="emerald.600"
-            size="md"
-            icon={<Icon as={<FontAwesome5 name="check" />} />}
-          >
-            <Text color="emerald.600" >Semanal</Text>
-            
-          </Checkbox>
-          
-        </Stack>
+            <Radio
+              _text={{
+                mx: 2,
+                color: 'emerald.600',
+              }}
+              value="1"
+              icon={<Icon as={<MaterialCommunityIcons name="check" />} />}
+              my={1}
+            >
+              Coleta Única
+            </Radio>
 
-        <Stack
-          direction={{
-            base: 'row',
-            md: 'row',
-          }}
-          space={16}
-          alignItems="flex-start"
-          mt={4}
-        >
-          <Checkbox
-           value="weekly"
-           colorScheme="emerald"
-           borderColor="emerald.600"
-           size="md"
-           textDecorationColor="green"
-           icon={<Icon as={<FontAwesome5 name="check" />} />}
+            <Radio
+              _text={{
+                mx: 2,
+                color: 'emerald.600',
+              }}
+              value="2"
+              icon={<Icon as={<MaterialCommunityIcons name="check" />} />}
+              my={1}
+            >
+              Semanal
+            </Radio>
+          </Stack>
+          <Stack
+            direction={{
+              base: 'row',
+              md: 'row',
+            }}
+            alignItems={{
+              base: 'flex-start',
+              md: 'center',
+            }}
+            space={10}
+            w="100%"
           >
-           <Text color="emerald.600" >Quinzenal</Text>
-            
-          </Checkbox>
-          <Checkbox
-            value="weekly"
-            colorScheme="emerald"
-            borderColor="emerald.600"
-            size="md"
-            icon={<Icon as={<FontAwesome5 name="check" />} />}
-          >
-            <Text color="emerald.600" >Mensal</Text>
-            
-          </Checkbox>
-          
-        </Stack>
-
-        
+            <Radio
+              _text={{
+                mx: 2,
+                color: 'emerald.600',
+              }}
+              value="3"
+              icon={<Icon as={<MaterialCommunityIcons name="check" />} />}
+              my={1}
+            >
+              Quinzenal
+            </Radio>
+            <Radio
+              _text={{
+                mx: 2,
+                color: 'emerald.600',
+              }}
+              value="4"
+              icon={<Icon as={<MaterialCommunityIcons name="check" />} />}
+              my={1}
+            >
+              Mensal
+            </Radio>
+          </Stack>
+        </Radio.Group>
       </Box>
 
       <Box
@@ -252,7 +263,7 @@ export default function DonationScheduling() {
           shadow="2"
           variant="solid"
           colorScheme="emerald"
-          onPress={() => navigation.navigate('DonationScheduling')}
+          onPress={() => navigation.navigate('DonationAddMoreScheduling')}
         >
           SALVAR
         </Button>
