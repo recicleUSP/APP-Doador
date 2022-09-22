@@ -9,6 +9,12 @@ import Impact from "../screens/tabs/Impact";
 import History from "../screens/tabs/History";
 import Profile from "../screens/tabs/Profile";
 import Notification from "../screens/Notification";
+import Donation from "../screens/Donation";
+import DonationType from "../screens/DonationType";
+import DonationAmount from "../screens/DonationAmount";
+import DonationScheduling from "../screens/DonationScheduling";
+import DonationAddMoreScheduling from "../screens/DonationAddMoreScheduling";
+import DonationResume from "../screens/DonationResume";
 import { RootStackParamList, RootTabParamList } from "../types";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -19,6 +25,12 @@ export function HomeNavigator() {
       <Stack.Screen name="Root" component={BottomTabNavigator} />
     
     <Stack.Screen name="Notification" component={Notification} />
+    <Stack.Screen name="Donation" component={Donation} />
+    <Stack.Screen name="DonationType" component={DonationType} />
+    <Stack.Screen name="DonationAmount" component={DonationAmount} />
+    <Stack.Screen name="DonationScheduling" component={DonationScheduling} />
+    <Stack.Screen name="DonationAddMoreScheduling" component={DonationAddMoreScheduling} />
+    <Stack.Screen name="DonationResume" component={DonationResume} />
    
     
     </Stack.Navigator>

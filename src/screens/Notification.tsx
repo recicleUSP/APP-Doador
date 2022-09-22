@@ -7,11 +7,7 @@ import {
   IconButton,
   View,
   Avatar,
-  VStack,
-  Heading,
   FlatList,
-  HStack,
-  Spacer,
 } from 'native-base';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
