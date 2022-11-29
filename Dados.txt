@@ -1,0 +1,59 @@
+Requisição de coleta:
+    Location(geopoint)
+    Adress(string)
+    DonorId(string)
+    PickerId(string)
+    DonorRating(number)
+    PickerRating(number)
+
+    LocalType(string):
+        value: "CASA"
+        value: "CONDOMÍNIO"
+        value: "ORGANIZAÇÃO PÚBLICA"
+
+    NumberOfType(number)
+
+    Trashtype(strings):
+        Paper
+        Aluminum
+        Plastic
+        BottlePet
+        Glass
+        Oil
+        Metal
+        Eletronic
+        Battery
+
+    BagQuantity(number)
+    BoxQuantity(number)
+
+    Weight(string):                                                                                         
+        value: "1kg a 5kg"
+        value: "5kg a 10kg"
+        value: "10kg a 15kg"
+        value: "20kg+"
+
+    InitialTime(timesTamp)
+    FinalTime(timesTamp)
+
+    Days(boolean):
+        Monday
+        Tuesday
+        Wednesday
+        Thursday
+        Friday
+        Saturday
+        Sunday
+
+    Period(string):
+        value: "Coleta Única"
+        value: "Semanal"
+        value: "Quinzenal"
+        value: "Mensal"
+
+Donor:
+    Name(string)
+    phone(string)
+    rating(number)
+    userId(string)
+

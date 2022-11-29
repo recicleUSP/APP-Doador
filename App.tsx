@@ -5,7 +5,7 @@ import { LinearGradient } from "expo-linear-gradient";
 
 import Routes from "./src/routes";
 import { DevAlert } from "./src/components/common";
-import { AuthProvider, CommonProvider } from "./src/contexts";
+import { AuthProvider, CommonProvider, DonationProvider } from "./src/contexts";
 import useCachedResources from "./src/hooks/useCachedResources";
 
 export default function App() {
@@ -21,6 +21,7 @@ export default function App() {
   else
     return (
       <NativeBaseProvider config={config}>
+        <DonationProvider>
         <CommonProvider>
           <AuthProvider>
             <Routes />
@@ -28,6 +29,7 @@ export default function App() {
             <StatusBar style="auto" />
           </AuthProvider>
         </CommonProvider>
+        </DonationProvider>
       </NativeBaseProvider>
     );
 }

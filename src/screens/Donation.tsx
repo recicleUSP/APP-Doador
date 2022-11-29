@@ -1,23 +1,27 @@
-import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+import { useDonation } from "../contexts";
 
 import {
   Box,
   Text,
   IconButton,
   View,
-  Avatar,
-  FlatList,
   Progress,
   Icon,
   Button,
-} from 'native-base';
-
-import { SafeAreaView } from 'react-native-safe-area-context';
+} from "native-base";
+import { useContext, useEffect } from "react";
 
 export default function Donation() {
   const navigation = useNavigation();
+
+  
+  const { localType, setLocalType } = useDonation();
+  useEffect(()=>{
+
+  },[])
 
   return (
     <View>
@@ -34,15 +38,15 @@ export default function Donation() {
           shadow={2}
           _icon={{
             paddingLeft: 1,
-            name: 'chevron-left',
+            name: "chevron-left",
             as: FontAwesome5,
-            color: 'emerald.500',
+            color: "emerald.500",
           }}
         />
         <Progress
           bg="white"
           _filledTrack={{
-            bg: 'emerald.500',
+            bg: "emerald.500",
           }}
           value={20}
           ml="45"
@@ -52,9 +56,8 @@ export default function Donation() {
           Passo 1 <Text color="muted.400">de 5</Text>
         </Text>
       </Box>
-      
+
       <Icon
-      
         as={MaterialCommunityIcons}
         mt={50}
         color="muted.400"
@@ -72,7 +75,8 @@ export default function Donation() {
           shadow="2"
           variant="solid"
           colorScheme="emerald"
-          onPress={() => navigation.navigate('Donation')}
+          
+          onPress={() => setLocalType("CASA/CONDOMÍNIO")}
         >
           CASA/CONDOMÍNIO
         </Button>
@@ -83,7 +87,7 @@ export default function Donation() {
           shadow="2"
           variant="solid"
           colorScheme="emerald"
-          onPress={() => navigation.navigate('Donation')}
+          onPress={() => setLocalType("COMÉRCIO")}
         >
           COMÉRCIO
         </Button>
@@ -94,7 +98,7 @@ export default function Donation() {
           shadow="2"
           variant="solid"
           colorScheme="emerald"
-          onPress={() => navigation.navigate('Donation')}
+          onPress={() => setLocalType("ORGANIZAÇÃO PUBLICA")}
         >
           ORGANIZAÇÃO PUBLICA
         </Button>
@@ -124,7 +128,7 @@ export default function Donation() {
           shadow="2"
           variant="solid"
           colorScheme="emerald"
-          onPress={() => navigation.navigate('DonationType')}
+          onPress={() => navigation.navigate("DonationType")}
         >
           PRÓXIMO
         </Button>

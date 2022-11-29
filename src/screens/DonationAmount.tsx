@@ -184,8 +184,8 @@ export default function DonationAmount() {
           </Radio>
         </Radio.Group>
         <Box justifyContent="space-around" flexDirection="row">
-          <Text color="emerald.600">1kg a 4kg</Text>
-          <Text color="emerald.600">5kg a 9kg</Text>
+          <Text color="emerald.600">1kg a 5kg</Text>
+          <Text color="emerald.600">5kg a 10kg</Text>
           <Text color="emerald.600">10kg a 15kg</Text>
         </Box>
 

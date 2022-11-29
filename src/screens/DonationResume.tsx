@@ -1,6 +1,6 @@
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-
+import { useDonation } from "../contexts";
 import {
   Box,
   Text,
@@ -20,6 +20,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function DonationType() {
   const navigation = useNavigation();
+  const { localType, setLocalType } = useDonation();
+
+
 
   return (
     <View>
@@ -80,7 +83,7 @@ export default function DonationType() {
               alignSelf="center"
             />
             <Text alignSelf="center" color="emerald.600" fontSize="md">
-              VIDRO
+              {localType}
             </Text>
           </Box>
           <Box>

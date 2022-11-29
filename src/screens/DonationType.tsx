@@ -1,6 +1,7 @@
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { useDonation } from '../contexts';
 
 import {
   Box,
@@ -16,10 +17,11 @@ import {
   Checkbox,
 } from 'native-base';
 
-import { SafeAreaView } from 'react-native-safe-area-context';
+
 
 export default function DonationType() {
   const navigation = useNavigation();
+  const { paper, setPaper } = useDonation();
 
   return (
     <View>
@@ -73,6 +75,7 @@ export default function DonationType() {
           colorScheme="emerald"
           size="lg"
           icon={<Icon as={<FontAwesome5 name="copy" />} />}
+          onChange={() => setPaper(true)}
         >
           PAPEL
         </Checkbox>
