@@ -21,7 +21,7 @@ To run the project for the **first** time you must follow this steps:
 
 1. Clone the GitHub repository
 ```bash
-git clone https://github.com/fredxc/ecodive.git
+git clone https://github.com/recicleUSP/APP-Doador
 ```
 
 2. Install the dependencies and start the npm project
