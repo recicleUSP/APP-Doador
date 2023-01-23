@@ -1,6 +1,7 @@
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useDonation } from "../contexts";
+import React, { useEffect } from "react";
 import {
   Box,
   Text,
@@ -16,13 +17,30 @@ import {
   Divider,
 } from 'native-base';
 
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { db } from '../firebase/functions';
+//import { firestoreApp } from '../firebase/firebaseconfig';
 
-export default function DonationType() {
+export default function DonationResume() {
   const navigation = useNavigation();
-  const { localType, setLocalType } = useDonation();
+  const { localType } = useDonation();
 
-
+  useEffect(() => {
+    const loadData = async (localType: string) => {
+      try {
+        //firestoreApp().collection('request')
+        await db.request.add({
+          address: "Rua Teste, 123",
+          donorId: "kX3SpdjcXTzKFehZ5vkB",
+          localType,
+          pickerId: "QGMIJIhEOECS4gdvn5WV"
+        })
+      }
+      catch (error) {
+        console.error(error)
+      }
+    }
+    loadData(localType); 
+  }, []);
 
   return (
     <View>
