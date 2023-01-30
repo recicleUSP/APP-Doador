@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "eject": "expo eject"
+    "start": "npx expo start",
+    "android": "npx expo start --android",
+    "ios": "npx expo start --ios",
+    "web": "npx expo start --web",
+    "eject": "npx expo eject"
   },
   "dependencies": {
     "@expo-google-fonts/montserrat": "^0.2.2",
@@ -16,7 +16,7 @@
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
     "axios": "^0.27.2",
-    "expo": "^47.0.8",
+    "expo": "^47.0.13",
     "expo-linear-gradient": "~12.0.1",
     "expo-notifications": "~0.17.0",
     "expo-secure-store": "~12.0.0",
@@ -24,7 +24,7 @@
     "expo-status-bar": "~1.4.2",
     "firebase": "^9.14.0",
     "formik": "^2.2.9",
-    "native-base": "^3.4.4",
+    "native-base": "^3.4.25",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-native": "0.70.5",
