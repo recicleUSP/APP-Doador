@@ -12,15 +12,10 @@ import {
   Icon,
   Button,
 } from "native-base";
-import { useContext, useEffect } from "react";
 
 export default function Donation() {
   const navigation = useNavigation();
   const { localType, setLocalType } = useDonation();
-  
-  useEffect(()=>{
-
-  },[])
 
   return (
     <View>

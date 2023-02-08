@@ -17,8 +17,8 @@ import {
   Divider,
 } from 'native-base';
 
-import { db } from '../firebase/functions';
-//import { firestoreApp } from '../firebase/firebaseconfig';
+import { addDocument } from '../firebase/functions';
+import { Request } from '../firebase/types';
 
 export default function DonationResume() {
   const navigation = useNavigation();
@@ -27,13 +27,13 @@ export default function DonationResume() {
   useEffect(() => {
     const loadData = async (localType: string) => {
       try {
-        //firestoreApp().collection('request')
-        await db.request.add({
+        const request: Request = {
           address: "Rua Teste, 123",
           donorId: "kX3SpdjcXTzKFehZ5vkB",
           localType,
           pickerId: "QGMIJIhEOECS4gdvn5WV"
-        })
+        }
+        await addDocument("request", request);
       }
       catch (error) {
         console.error(error)
