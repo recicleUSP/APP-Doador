@@ -11,18 +11,6 @@ const firebaseConfig = {
     appId: APP_ID,
     measurementId: MEASUREMENT_ID
 };
-  
-/*
-const firebaseConfig = {
-    apiKey: "AIzaSyD43_ayIA-4EkAmurNRlUI3NV_RTfTRE60",
-    authDomain: "reciclaplusnew.firebaseapp.com",
-    projectId: "reciclaplusnew",
-    storageBucket: "reciclaplusnew.appspot.com",
-    messagingSenderId: "834087762330",
-    appId: "1:834087762330:web:481fb0b9e59bcc75afe223",
-    measurementId: "G-NZQ7DMRZQP"
-};
-*/
 
 const app = !getApps().length
   ? initializeApp(firebaseConfig)
