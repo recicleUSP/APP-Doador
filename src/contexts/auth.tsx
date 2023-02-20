@@ -15,7 +15,7 @@ interface SignInParams {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-export const AuthProvider: React.FC = ({ children }) => {
+export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = ({ children }) => {
   const [signed, setSigned] = useState(false);
   const [loading, setLoading] = useState(false);
 
