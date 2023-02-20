@@ -26,8 +26,10 @@ export default function SignUp() {
       .matches(phoneRegExp, "Telefone inválido")
       .required("Campo obrigatório"),
     name: Yup.string().required("Campo obrigatório"),
-    email: Yup.string().required("Campo obrigatório"),
-    password: Yup.string().required("Campo obrigatório"),
+    email: Yup.string().email().required("Campo obrigatório"),
+    password: Yup.string()
+    .required("Campo obrigatório")
+    .min(6, "Senha é muito curta. Mínimo de 6 caracteres"),
   });
 
   const [show, setShow] = React.useState(false);
