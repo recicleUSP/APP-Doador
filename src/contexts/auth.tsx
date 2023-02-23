@@ -9,12 +9,18 @@ interface AuthContextData {
   signed: boolean;
   loading: boolean;
   signOut: () => void;
+  signUp: (values: any) => void;
   signIn: (values: any) => void;
 }
 
-interface SignInParams {
+interface SignUpParams {
   phone: string;
   name: string;
+  email: string;
+  password: string;
+}
+
+interface SignInParams {
   email: string;
   password: string;
 }
@@ -37,7 +43,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = 
     fetchToken();
   }, []);
 
-  async function signIn(values: SignInParams) { 
+  async function signUp(values: SignUpParams) { 
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, values.email, values.password)
       .then((userCredential) => {
@@ -57,15 +63,16 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = 
         const errorMessage = error.message;
         // ..
       });
+  }
 
-    /*setLoading(true);
+  async function signIn(values: SignInParams) { 
+    setLoading(true);
     await SecureStore.setItemAsync("token", "true");
 
     setTimeout(() => {
       setSigned(true);
       setLoading(false);
     }, 1000);
-    */
   }
 
   async function signOut() {
@@ -81,6 +88,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = 
       value={{
         signed,
         signIn,
+        signUp,
         loading,
         signOut,
       }}

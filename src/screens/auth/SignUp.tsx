@@ -12,12 +12,15 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import React from "react";
 import * as Yup from "yup";
 import { Formik } from "formik";
+import { useNavigation } from "@react-navigation/core";
 
 import { useAuth } from "../../contexts";
 import { OnboardingBase } from "../../components/common";
 
 export default function SignUp() {
   const { loading, signIn } = useAuth();
+  const navigation = useNavigation();
+
   const phoneRegExp =
     /^\s*(\d{2}|\d{0})[-. ]?(\d{5}|\d{4})[-. ]?(\d{4})[-. ]?\s*$/;
 
@@ -144,7 +147,7 @@ export default function SignUp() {
                 colorScheme="emerald"
                 mt={nameError ? 6 : 10}
                 opacity={invalid ? 0.5 : 1}
-                onPress={() => handleSubmit()}
+                onPress={() => {handleSubmit(); navigation.navigate("Onboarding")}}
                 _pressed={{ bg: "emerald.700" }}
               >
                 Cadastrar
