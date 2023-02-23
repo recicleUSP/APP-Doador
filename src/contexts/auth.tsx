@@ -1,16 +1,22 @@
 import * as SecureStore from "expo-secure-store";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useState, createContext, useContext, useEffect } from "react";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { Donor } from '../firebase/types';
+import { setDocument } from "../firebase/functions";
 
 interface AuthContextData {
   signed: boolean;
   loading: boolean;
   signOut: () => void;
-  signIn: (data: any) => void;
+  signIn: (values: any) => void;
 }
 
 interface SignInParams {
   phone: string;
+  name: string;
+  email: string;
+  password: string;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -31,14 +37,35 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = 
     fetchToken();
   }, []);
 
-  async function signIn(data: SignInParams) {
-    setLoading(true);
+  async function signIn(values: SignInParams) { 
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, values.email, values.password)
+      .then((userCredential) => {
+        // Signed in 
+        const donorId = userCredential.user.uid;
+
+        const donor: Donor = {
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+        }
+
+        setDocument("donor", donorId, donor);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+
+    /*setLoading(true);
     await SecureStore.setItemAsync("token", "true");
 
     setTimeout(() => {
       setSigned(true);
       setLoading(false);
     }, 1000);
+    */
   }
 
   async function signOut() {
