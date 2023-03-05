@@ -61,7 +61,7 @@ interface DonationContextData {
 
 const DonationContext = createContext<DonationContextData>({} as DonationContextData);
 
-export const DonationProvider: React.FC = ({ children }) => {
+export const DonationProvider: React.FC<React.PropsWithChildren<{children: any}>> = ({ children }) => {
   const [localType, setLocalType] = useState('Null');
   const [numberOfType, setNumberOfType] = useState(0);
   const [paper, setPaper] = useState(false);

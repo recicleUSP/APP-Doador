@@ -6,13 +6,12 @@ interface Request {
 }
 
 interface Donor {
-    name: string,
-    phone: string,
-    rating: number,
-    userId: string
+    name: string,    
+    email: string,
+    phone: string
 }
 
 export { 
     Request, 
-    Donor 
+    Donor
 }

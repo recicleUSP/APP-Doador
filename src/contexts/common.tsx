@@ -8,7 +8,7 @@ interface CommonContextData {
 
 const CommonContext = createContext<CommonContextData>({} as CommonContextData);
 
-export const CommonProvider: React.FC = ({ children }) => {
+export const CommonProvider: React.FC<React.PropsWithChildren<{children: any}>> = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [devAlert, setDevAlert] = useState(false);
 
