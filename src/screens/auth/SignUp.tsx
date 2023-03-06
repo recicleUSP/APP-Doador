@@ -18,7 +18,7 @@ import { useAuth } from "../../contexts";
 import { OnboardingBase } from "../../components/common";
 
 export default function SignUp() {
-  const { loading, signIn } = useAuth();
+  const { loading, signUp } = useAuth();
   const navigation = useNavigation();
 
   const phoneRegExp =
@@ -42,7 +42,7 @@ export default function SignUp() {
       <Formik
         validateOnMount
         validationSchema={SignUpSchema}
-        onSubmit={(values) => signIn(values)}
+        onSubmit={(values) => signUp(values)}
         initialValues={{ phone: "", name: "", email: "", password: ""}}
       >
         {({

@@ -1,7 +1,7 @@
 import * as SecureStore from "expo-secure-store";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useState, createContext, useContext, useEffect } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, RecaptchaVerifier, createUserWithEmailAndPassword, signInWithPhoneNumber } from "firebase/auth";
 import { Donor } from '../firebase/types';
 import { setDocument } from "../firebase/functions";
 
@@ -11,6 +11,7 @@ interface AuthContextData {
   signOut: () => void;
   signUp: (values: any) => void;
   signIn: (values: any) => void;
+  confirmSMS: (sms: string) => void;
 }
 
 interface SignUpParams {
@@ -21,8 +22,7 @@ interface SignUpParams {
 }
 
 interface SignInParams {
-  email: string;
-  password: string;
+  phone: string;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -65,9 +65,41 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = 
       });
   }
 
+
+  const generateRecaptcha = (auth: any) => {
+    window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
+      'size': 'invisible',
+      'callback': (response: any) => {
+
+      }
+    }, auth);
+  }
+
+  async function confirmSMS(sms: string) {
+    let confirmationResult = window.confirmationResult;
+
+    confirmationResult.confirm(sms).then(async (result: any) => {
+      await SecureStore.setItemAsync("user", result.user);
+      await SecureStore.setItemAsync("uid", result.user.uid);
+
+    }).catch((error: any) => {
+      console.log(error);
+    });
+    
+  }
+
   async function signIn(values: SignInParams) { 
+    const auth = getAuth();
     setLoading(true);
-    await SecureStore.setItemAsync("token", "true");
+
+    generateRecaptcha(auth);
+    let verifier = window.recaptchaVerifier;
+    signInWithPhoneNumber(auth, values.phone, verifier)
+    .then((confirmationResult) => {
+      window.confirmationResult = confirmationResult;
+    }).catch((error) => {
+      console.log(error);
+    });
 
     setTimeout(() => {
       setSigned(true);
@@ -87,6 +119,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = 
     <AuthContext.Provider
       value={{
         signed,
+        confirmSMS,
         signIn,
         signUp,
         loading,
