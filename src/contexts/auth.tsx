@@ -11,7 +11,7 @@ interface AuthContextData {
   signOut: () => void;
   signUp: (values: any) => void;
   signIn: (values: any) => void;
-  confirmSMS: (sms: string) => void;
+  confirmSMS: (sms: any) => void;
 }
 
 interface SignUpParams {
