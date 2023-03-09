@@ -3,7 +3,8 @@ import * as SplashScreen from "expo-splash-screen";
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { getAuth, RecaptchaVerifier, createUserWithEmailAndPassword, signInWithPhoneNumber } from "firebase/auth";
 import { Donor } from '../firebase/types';
-import { setDocument } from "../firebase/functions";
+import { setDocument, getDocument } from "../firebase/functions";
+import { useNavigation } from "@react-navigation/core";
 
 interface AuthContextData {
   signed: boolean;
@@ -30,6 +31,7 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = ({ children }) => {
   const [signed, setSigned] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigation = useNavigation();
 
   useEffect(() => {
     async function fetchToken() {
@@ -65,7 +67,6 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = 
       });
   }
 
-
   const generateRecaptcha = (auth: any) => {
     window.recaptchaVerifier = new RecaptchaVerifier('sign-in-button', {
       'size': 'invisible',
@@ -81,6 +82,15 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = 
     confirmationResult.confirm(sms).then(async (result: any) => {
       await SecureStore.setItemAsync("user", result.user);
       await SecureStore.setItemAsync("uid", result.user.uid);
+
+      try {
+        const donorData = await getDocument("donor", result.user.uid);
+        if(!donorData.exists()) {
+            //Fazer função e tela de cadastro de dados do usuário
+        }
+      } finally {
+        navigation.navigate("Onboarding");
+      }
 
     }).catch((error: any) => {
       console.log(error);
