@@ -20,15 +20,6 @@ export default function Onboarding() {
         <Button
           size="lg"
           width="46%"
-          bg="muted.400"
-          _pressed={{ bg: "muted.500" }}
-          onPress={() => navigation.navigate("SignUp")}
-        >
-          Cadastrar
-        </Button>
-        <Button
-          size="lg"
-          width="46%"
           bg="emerald.600"
           _pressed={{ bg: "emerald.700" }}
           onPress={() => navigation.navigate("SignIn")}

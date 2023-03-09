@@ -16,10 +16,8 @@ interface AuthContextData {
 }
 
 interface SignUpParams {
-  phone: string;
   name: string;
   email: string;
-  password: string;
 }
 
 interface SignInParams {
@@ -46,25 +44,18 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = 
   }, []);
 
   async function signUp(values: SignUpParams) { 
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, values.email, values.password)
-      .then((userCredential) => {
-        // Signed in 
-        const donorId = userCredential.user.uid;
+    let uid = await SecureStore.getItemAsync("uid") as string;
+    let phone = await SecureStore.getItemAsync("phone") as string;
+    
+    const donor: Donor = {
+      name: values.name,
+      email: values.email,
+      phone,
+    }
 
-        const donor: Donor = {
-          name: values.name,
-          email: values.email,
-          phone: values.phone,
-        }
+    setDocument("donor", uid, donor);
 
-        setDocument("donor", donorId, donor);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // ..
-      });
+    navigation.navigate("Onboarding");
   }
 
   const generateRecaptcha = (auth: any) => {
@@ -82,11 +73,12 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = 
     confirmationResult.confirm(sms).then(async (result: any) => {
       await SecureStore.setItemAsync("user", result.user);
       await SecureStore.setItemAsync("uid", result.user.uid);
+      await SecureStore.setItemAsync("phone", result.user.phoneNumber);
 
       try {
         const donorData = await getDocument("donor", result.user.uid);
         if(!donorData.exists()) {
-            //Fazer função e tela de cadastro de dados do usuário
+          navigation.navigate("SignUp");
         }
       } finally {
         navigation.navigate("Onboarding");
