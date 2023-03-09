@@ -96,7 +96,9 @@ export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = 
 
     generateRecaptcha(auth);
     let verifier = window.recaptchaVerifier;
-    signInWithPhoneNumber(auth, values.phone, verifier)
+    let phone = '+55'+values.phone.replace('-','');
+
+    signInWithPhoneNumber(auth, phone, verifier)
     .then((confirmationResult) => {
       window.confirmationResult = confirmationResult;
     }).catch((error) => {
