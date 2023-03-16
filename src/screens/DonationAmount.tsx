@@ -29,6 +29,16 @@ export default function DonationAmount() {
   const [onChangeValueSack, setOnChangeValueSack] = useState(0);
   const [onChangeValueBox, setOnChangeValueBox] = useState(0);
 
+  const [checked, setChecked] = useState(false);
+  const [checked2, setChecked2] = useState(false);
+  const [checked3, setChecked3] = useState(false);
+
+  const itemTeste = [
+    ['1kg a 5kg',setChecked,checked],
+    ['5kg a 10kg', setChecked2,checked2],
+    ['10kg a 15kg', setChecked3,checked3],
+  ]
+
   return (
     <View>
       <Box pb={4} height="120" bgColor="emerald.100" px={8}>
@@ -68,10 +78,9 @@ export default function DonationAmount() {
       <Box mt={4} mx={8}>
         <Text color="muted.500" fontSize="md" alignSelf="flex-start" bold>
           QUANTIDADE DE SACOS:
-        </Text>
-
+        </Text> 
         <Slider
-          defaultValue={0}
+          defaultValue={0} 
           alignSelf="center"
           size="md"
           mt={4}
@@ -151,38 +160,25 @@ export default function DonationAmount() {
           justifyContent="space-around"
           flexDirection="row"
         >
-          <Radio
-            _text={{
-              color: 'emerald.600',
-            }}
-            value="1"
-            icon={<Icon as={<MaterialCommunityIcons name="check" />} />}
-            my={1}
-          >
-            {' '}
-          </Radio>
-
-          <Radio
-            _text={{
-              color: 'emerald.600',
-            }}
-            value="2"
-            icon={<Icon as={<MaterialCommunityIcons name="check" />} />}
-            my={1}
-          >
-            {' '}
-          </Radio>
-          <Radio
-            _text={{
-              color: 'emerald.600',
-            }}
-            value="3"
-            icon={<Icon as={<MaterialCommunityIcons name="check" />} />}
-            my={1}
-          >
-            {' '}
-          </Radio>
-        </Radio.Group>
+          {itemTeste.map((element,index)=>{
+            const func = element[1] as React.Dispatch<React.SetStateAction<boolean>>
+            return <Radio
+                    _text={{
+                      color: 'emerald.600',
+                    }}
+                    value= {index.toString()}
+                    icon={
+                      <Icon as={
+                        <MaterialCommunityIcons name="check" />
+                        
+                      } 
+                    />}
+                    my={1}
+                  >
+                    {' '}
+                </Radio>
+          })}
+        </Radio.Group> 
         <Box justifyContent="space-around" flexDirection="row">
           <Text color="emerald.600">1kg a 5kg</Text>
           <Text color="emerald.600">5kg a 10kg</Text>

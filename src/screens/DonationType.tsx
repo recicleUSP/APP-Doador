@@ -91,17 +91,17 @@ export default function Donation() {
         </Stack>
         
  
-      {itemTeste.map((element)=>{
-      const func = element[1] as React.Dispatch<React.SetStateAction<boolean>>
-      return  <Checkbox
-          isChecked={element[2] as boolean}
-          onChange={() =>func(!element[2] as boolean)}
-          color='#009688'
-          value={element[0] as string}
-        >
-          {element[0] as string}
-        </Checkbox>  
-  })}
+        {itemTeste.map((element)=>{
+        const func = element[1] as React.Dispatch<React.SetStateAction<boolean>>
+        return  <Checkbox
+                  isChecked={element[2] as boolean}
+                  onChange={() =>func(!element[2] as boolean)}
+                  color='#009688'
+                  value={element[0] as string}
+                >
+            {element[0] as string}
+          </Checkbox>  
+        })}
 
         <Box
           flexDirection="row"

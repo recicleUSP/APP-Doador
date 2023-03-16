@@ -36,6 +36,24 @@ export default function DonationScheduling() {
     values: SetStateAction<number[]>
   ) => setNonCollidingMultiSliderValue(values);
 
+  const [checked, setChecked] = useState(false);
+  const [checked2, setChecked2] = useState(false);
+  const [checked3, setChecked3] = useState(false);
+  const [checked4, setChecked4] = useState(false);
+  const [checked5, setChecked5] = useState(false);
+  const [checked6, setChecked6] = useState(false);
+  const [checked7, setChecked7] = useState(false);
+
+  const itemTeste = [
+    ['Segunda',setChecked,checked],
+    ['Terça', setChecked2,checked2],
+    ['Quarta', setChecked3,checked3],
+    ['Quinta', setChecked4,checked4],
+    ['Sexta', setChecked5,checked5],
+    ['Sábado', setChecked6,checked6],
+    ['Domingo', setChecked7,checked7],
+  ]
+
   return (
     <View>
       <Box pb={4} height="120" bgColor="emerald.100" px={8}>
@@ -99,62 +117,18 @@ export default function DonationScheduling() {
           alignItems="flex-start"
           mt={4}
         >
-          <Checkbox
-            value="paper"
-            colorScheme="emerald"
-            size="lg"
-            icon={<Icon as={<FontAwesome5 name="calendar-check" />} />}
-          >
-            SEGUNDA
-          </Checkbox>
-          <Checkbox
-            value="aluminum"
-            colorScheme="emerald"
-            size="lg"
-            icon={<Icon as={<FontAwesome5 name="calendar-check" />} />}
-          >
-            TERÇA
-          </Checkbox>
-          <Checkbox
-            colorScheme="emerald"
-            value="Plastic"
-            size="lg"
-            icon={<Icon as={<FontAwesome5 name="calendar-check" />} />}
-          >
-            QUARTA
-          </Checkbox>
-          <Checkbox
-            value="Glass"
-            colorScheme="emerald"
-            size="lg"
-            icon={<Icon as={<FontAwesome5 name="calendar-check" />} />}
-          >
-            QUINTA
-          </Checkbox>
-          <Checkbox
-            value="Oil"
-            colorScheme="emerald"
-            size="lg"
-            icon={<Icon as={<FontAwesome5 name="calendar-check" />} />}
-          >
-            SEXTA
-          </Checkbox>
-          <Checkbox
-            value="Metal"
-            colorScheme="emerald"
-            size="lg"
-            icon={<Icon as={<FontAwesome5 name="calendar-check" />} />}
-          >
-            SÁBADO
-          </Checkbox>
-          <Checkbox
-            value="Eletronic"
-            colorScheme="emerald"
-            size="lg"
-            icon={<Icon as={<FontAwesome5 name="calendar-check" />} />}
-          >
-            DOMINGO
-          </Checkbox>
+        {itemTeste.map((element)=>{
+        const func = element[1] as React.Dispatch<React.SetStateAction<boolean>>
+        return  <Checkbox
+                  isChecked={element[2] as boolean}
+                  onChange={() =>func(!element[2] as boolean)}
+                  color='#009688'
+                  size="lg"
+                  value={element[0] as string}
+                >
+            {element[0] as string}
+          </Checkbox>  
+        })}
         </Stack>
 
         <Radio.Group
