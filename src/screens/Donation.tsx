@@ -20,7 +20,6 @@ export default function Donation() {
   
   const { localType, setLocalType } = useDonation();
   useEffect(()=>{
-
   },[])
 
   return (
@@ -68,6 +67,11 @@ export default function Donation() {
       <Text color="muted.400" mt={8} fontSize="md" alignSelf="center">
         Residêncial ou Comercial?
       </Text>
+
+      <Text color="muted.400" mt={8} fontSize="md" alignSelf="center">
+        {localType}
+      </Text>
+
       <Box py={10} alignItems="center" borderColor="muted.100">
         <Button
           px={8}

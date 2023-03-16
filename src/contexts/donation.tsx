@@ -89,7 +89,6 @@ export const DonationProvider: React.FC = ({ children }) => {
   const [sunday, setSunday] = useState(false);
   const [period, setPeriod] = useState('null');
 
-
   useEffect(() => {}, []);
 
   return (

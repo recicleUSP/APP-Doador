@@ -2,6 +2,7 @@ import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { useDonation } from '../contexts';
+import React, { Component, useEffect } from 'react';
 
 import {
   Box,
@@ -17,11 +18,29 @@ import {
   Checkbox,
 } from 'native-base';
 
+import { useState } from 'react';
 
-
-export default function DonationType() {
+export default function Donation() {
   const navigation = useNavigation();
-  const { paper, setPaper } = useDonation();
+  const { localType, setLocalType} = useDonation();
+
+  const [checked, setChecked] = useState(false);
+  const [checked2, setChecked2] = useState(false);
+  const [checked3, setChecked3] = useState(false);
+  const [checked4, setChecked4] = useState(false);
+  const [checked5, setChecked5] = useState(false);
+  const [checked6, setChecked6] = useState(false);
+  const [checked7, setChecked7] = useState(false);
+
+  const itemTeste = [
+    ['Papel',setChecked,checked],
+    ['Aluminio', setChecked2,checked2],
+    ['Plástico', setChecked3,checked3],
+    ['vidro', setChecked4,checked4],
+    ['Óleo de cozinha', setChecked5,checked5],
+    ['Metal', setChecked6,checked6],
+    ['Eletrônico', setChecked7,checked7],
+  ]
 
   return (
     <View>
@@ -56,95 +75,40 @@ export default function DonationType() {
           Passo 2 <Text color="muted.400">de 5</Text>
         </Text>
       </Box>
-      <Text color="muted.400" mt={8} fontSize="lg" alignSelf="center" mx={8}>
-        Selecione os tipos de recicláveis que serão coletados:
-      </Text>
-
-      <Stack
-        direction={{
-          base: 'column',
-          md: 'row',
-        }}
-        space={3}
-        alignItems="flex-start"
-        mx={8}
-        mt={6}
-      >
-        <Checkbox
-          value="paper"
-          colorScheme="emerald"
-          size="lg"
-          icon={<Icon as={<FontAwesome5 name="copy" />} />}
-          onChange={() => setPaper(true)}
+        <Text color="muted.400" mt={8} fontSize="lg" alignSelf="center" mx={8}>
+          Selecione os tipos de recicláveis que serão coletados:
+        </Text>
+        <Stack
+          direction={{ 
+            base: 'column',
+            md: 'row',
+          }}
+          space={3}
+          alignItems="flex-start"
+          mx={8}
+          mt={6}
         >
-          PAPEL
-        </Checkbox>
-        <Checkbox
-          value="aluminum"
-          colorScheme="emerald"
-          size="lg"
-          icon={<Icon as={<FontAwesome5 name="trash-alt" />} />}
-        >
-          ALUMÍNIO
-        </Checkbox>
-        <Checkbox
-          colorScheme="emerald"
-          value="Plastic"
-          size="lg"
-          icon={<Icon as={<MaterialCommunityIcons name="bottle-soda-classic" />} />}
-        >
-          PLÁSTICO
-        </Checkbox>
-        <Checkbox
-          value="Glass"
-          colorScheme="emerald"
-          size="lg"
-          icon={<Icon as={<FontAwesome5 name="wine-bottle" />} />}
-        >
-          VIDRO
-        </Checkbox>
-        <Checkbox
-          value="Oil"
-          colorScheme="emerald"
-          size="lg"
-          icon={<Icon as={<MaterialCommunityIcons name="oil" />} />}
-        >
-          ÓLEO DE COZINHA
-        </Checkbox>
-        <Checkbox
-          value="Metal"
-          colorScheme="emerald"
-          size="lg"
-          icon={<Icon as={<FontAwesome5 name="spray-can" />} />}
-        >
-          METAL
-        </Checkbox>
-        <Checkbox
+        </Stack>
         
-          value="Eletronic"
-          colorScheme="emerald"
-          size="lg"
-          icon={<Icon as={<MaterialCommunityIcons name="cellphone-basic" />} width="100px" />}
+ 
+      {itemTeste.map((element)=>{
+      const func = element[1] as React.Dispatch<React.SetStateAction<boolean>>
+      return  <Checkbox
+          isChecked={element[2] as boolean}
+          onChange={() =>func(!element[2] as boolean)}
+          color='#009688'
+          value={element[0] as string}
         >
-          ELETRONICO
-        </Checkbox>
-        <Checkbox
-          value="Battery"
-          colorScheme="emerald"
-          size="lg"
-          icon={<Icon as={<FontAwesome5 name="car-battery" />} />}
-        >
-          BATERIAS
-        </Checkbox>
-      </Stack>
-      
+          {element[0] as string}
+        </Checkbox>  
+  })}
 
-      <Box
-        flexDirection="row"
-        borderColor="muted.100"
-        mt={100}
-        justifyContent="center"
-      >
+        <Box
+          flexDirection="row"
+          borderColor="muted.100"
+          mt={100}
+          justifyContent="center"
+        >
         <Button
           mr={3}
           px={8}
@@ -167,7 +131,7 @@ export default function DonationType() {
         >
           PRÓXIMO
         </Button>
-      </Box>
+      </Box> 
     </View>
   );
 }
