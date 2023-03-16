@@ -1,21 +1,33 @@
 import * as SecureStore from "expo-secure-store";
 import * as SplashScreen from "expo-splash-screen";
 import React, { useState, createContext, useContext, useEffect } from "react";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { Donor } from '../firebase/types';
+import { setDocument } from "../firebase/functions";
 
 interface AuthContextData {
   signed: boolean;
   loading: boolean;
   signOut: () => void;
-  signIn: (data: any) => void;
+  signUp: (values: any) => void;
+  signIn: (values: any) => void;
+}
+
+interface SignUpParams {
+  phone: string;
+  name: string;
+  email: string;
+  password: string;
 }
 
 interface SignInParams {
-  phone: string;
+  email: string;
+  password: string;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
-export const AuthProvider: React.FC = ({ children }) => {
+export const AuthProvider: React.FC<React.PropsWithChildren<{children: any}>> = ({ children }) => {
   const [signed, setSigned] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -31,7 +43,29 @@ export const AuthProvider: React.FC = ({ children }) => {
     fetchToken();
   }, []);
 
-  async function signIn(data: SignInParams) {
+  async function signUp(values: SignUpParams) { 
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, values.email, values.password)
+      .then((userCredential) => {
+        // Signed in 
+        const donorId = userCredential.user.uid;
+
+        const donor: Donor = {
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+        }
+
+        setDocument("donor", donorId, donor);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+  }
+
+  async function signIn(values: SignInParams) { 
     setLoading(true);
     await SecureStore.setItemAsync("token", "true");
 
@@ -54,6 +88,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       value={{
         signed,
         signIn,
+        signUp,
         loading,
         signOut,
       }}

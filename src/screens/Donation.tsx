@@ -12,12 +12,10 @@ import {
   Icon,
   Button,
 } from "native-base";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 
 export default function Donation() {
   const navigation = useNavigation();
-
-  
   const { localType, setLocalType } = useDonation();
   useEffect(()=>{
   },[])
@@ -80,9 +78,9 @@ export default function Donation() {
           variant="solid"
           colorScheme="emerald"
           
-          onPress={() => setLocalType("CASA/CONDOMÍNIO")}
+          onPress={() => {setLocalType("CASA"); navigation.navigate("DonationType")}}
         >
-          CASA/CONDOMÍNIO
+          CASA
         </Button>
         <Button
           mt={6}
@@ -91,9 +89,9 @@ export default function Donation() {
           shadow="2"
           variant="solid"
           colorScheme="emerald"
-          onPress={() => setLocalType("COMÉRCIO")}
+          onPress={() => {setLocalType("CONDOMÍNIO"); navigation.navigate("DonationType")}}
         >
-          COMÉRCIO
+          CONDOMÍNIO
         </Button>
         <Button
           mt={6}
@@ -102,7 +100,7 @@ export default function Donation() {
           shadow="2"
           variant="solid"
           colorScheme="emerald"
-          onPress={() => setLocalType("ORGANIZAÇÃO PUBLICA")}
+          onPress={() => {setLocalType("ORGANIZAÇÃO PUBLICA"); navigation.navigate("DonationType")}}
         >
           ORGANIZAÇÃO PUBLICA
         </Button>
